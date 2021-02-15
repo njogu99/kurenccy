@@ -21,7 +21,7 @@ const blockchain = new Blockchain();
 const transactionPool = new TransactionPool();
 const wallet = new Wallet();
 const pubsub = new PubSub({ blockchain, transactionPool, redisUrl: REDIS_URL });
-//const pubsub = new PubSub({ blockchain, transactionPool, wallet }); // for PubNub
+// const pubsub = new PubSub({ blockchain, transactionPool, wallet }); // for PubNub
 const transactionMiner = new TransactionMiner({ blockchain, transactionPool, wallet, pubsub });
 
 app.use(bodyParser.json());
@@ -113,12 +113,16 @@ app.get('/api/known-addresses', (req, res) => {
     for (let transaction of block.data) {
       const recipient = Object.keys(transaction.outputMap);
 
+      console.log(recipient);
+
       recipient.forEach(recipient => addressMap[recipient] = recipient);
+
+
     }
   }
 
   res.json(Object.keys(addressMap));
-});
+}); 
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/dist/index.html'));

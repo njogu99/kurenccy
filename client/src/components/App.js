@@ -16,7 +16,7 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <img className='logo' src={logo}></img>
+        <img className='logo' src={logo}></img> 
         <br />
         <div>
           Welcome to Kurenccy

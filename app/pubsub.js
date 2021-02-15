@@ -6,6 +6,7 @@ const CHANNELS = {
   TRANSACTION: 'TRANSACTION'
 };
 
+
 class PubSub {
   constructor({ blockchain, transactionPool, redisUrl }) {
     this.blockchain = blockchain;
